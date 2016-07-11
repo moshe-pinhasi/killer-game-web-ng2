@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-//import * as _ from 'lodash';
+// import * as _ from 'lodash';
 
 import 'lodash';
 declare var _;
@@ -19,10 +19,10 @@ export class WordsService {
   killersNames: string[];
 
   constructor() {
-    this.killersNames = _.shuffle(this.words);
+    this.killersNames = _.shuffle( this.words );
   }
 
-  getWord (index) : string {
+  getWord(index): string {
     return this.killersNames[index];
   }
 }

@@ -18,11 +18,11 @@ export class KillersService {
   }
 
   addKiller (killer): void {
-    this.killers.push({
+    this.killers.push( {
       name: killer,
-      uuid: _.random(1000000).toString(),
-      word: this.wordsService.getWord(this.killers.length+1)
-    });
+      uuid: _.random( 1000000 ).toString(),
+      word: this.wordsService.getWord( this.killers.length + 1 )
+    } );
   }
 
   removeKiller (uuid): void {

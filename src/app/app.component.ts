@@ -1,12 +1,10 @@
 import { Component } from '@angular/core';
-//import { ROUTER_DIRECTIVES } from '@angular/router';
+// import { ROUTER_DIRECTIVES } from '@angular/router';
 
-import { KillersService } from "./shared/services/killers.service";
-import { WordsService } from "./shared/services/words.service";
+import { KillersService } from './shared/services/killers.service';
+import { WordsService } from './shared/services/words.service';
 
-
-import { UserAvatarComponent } from "./shared/components/user-avatar/user-avatar.component";
-
+import { UserAvatarComponent } from './shared/components/user-avatar/user-avatar.component';
 
 import '../style/app.scss';
 
@@ -15,7 +13,7 @@ import '../style/app.scss';
  * Top Level Component
  */
 
-//directives: [...ROUTER_DIRECTIVES],
+// directives: [...ROUTER_DIRECTIVES],
 @Component({
   selector: 'my-app', // <my-app></my-app>
   providers: [WordsService, KillersService],
@@ -23,9 +21,7 @@ import '../style/app.scss';
   template: `
     <div>Webpack Angular 2 Starter</div>
 
-    <div>
-      <user-avatar></user-avatar>
-    </div>
+    <div><user-avatar [uuid]="286628"></user-avatar></div>
   `
 })
 export class AppComponent {
