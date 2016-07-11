@@ -1,12 +1,14 @@
 import { Component } from '@angular/core';
- import { ROUTER_DIRECTIVES } from '@angular/router';
+import { ROUTER_DIRECTIVES } from '@angular/router';
 
 import { KillersService } from './shared/services/killers.service';
 import { WordsService } from './shared/services/words.service';
 
 import { UserAvatarComponent } from './shared/components/user-avatar/user-avatar.component';
 
-import '../style/app.scss';
+import '../style/general.scss';
+import '../style/globals.scss';
+import '../style/btns.scss';
 
 /*
  * App Component
@@ -20,8 +22,6 @@ import '../style/app.scss';
   directives: [UserAvatarComponent, ROUTER_DIRECTIVES],
   template: `
     <div>Webpack Angular 2 Starter</div>
-
-    <!--<div><user-avatar [uuid]="286628"></user-avatar></div>-->
 
     <div>
       <nav>
@@ -44,7 +44,5 @@ export class AppComponent {
     killersService.addKiller('yaniv');
     killersService.addKiller('igal');
     killersService.addKiller('yaron');
-
-    console.log(killersService.getKillers());
   }
 }

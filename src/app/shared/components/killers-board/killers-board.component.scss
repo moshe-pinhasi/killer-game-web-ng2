@@ -1,0 +1,33 @@
+.killersBoard {
+  position: relative;
+  width: 330px;
+  padding: 10px;
+  background: white;
+  color: black;
+  border: 5px solid #17954c;
+  border-radius: 15px;
+
+  &__headerContainer {
+    padding: 10px;
+    text-align: center;
+    font-weight: 700;
+    font-size: 18px;
+  }
+
+  &__gameContainer {
+    height: 500px;
+    border-top: 1px dashed black;
+    overflow: auto;
+  }
+
+  &__actionsContainer {
+    text-align: center;
+    padding: 10px 10px 0 10px;
+    border-top: 1px dashed black;
+
+    &:empty {
+      visibility: hidden;
+    }
+  }
+
+}

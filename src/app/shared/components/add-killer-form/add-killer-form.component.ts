@@ -1,16 +1,45 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+
+import { KillersService } from '../../services/killers.service';
 
 @Component({
-  moduleId: module.id,
-  selector: 'app-add-killer-form',
-  templateUrl: 'add-killer-form.component.html',
-  styleUrls: ['add-killer-form.component.css']
+  selector: 'add-killer-form',
+  styleUrls: ['add-killer-form.component.scss'],
+  providers: [],
+  templateUrl: `
+    <div class="addKillerForm pull--right">
+
+      <div class="addKillerForm__inputContainer">
+          <input type="text"
+               [(ngModel)]="name"
+               class="addKillerForm__input"
+               placeholder="Type a name">
+        </div>
+
+        <button type="submit"
+            class="btn btn__add btn--circle addKillerForm__addBtn"
+            (click)="sendForm()">
+          +
+        </button>
+    </div>
+  `
 })
-export class AddKillerFormComponent implements OnInit {
+export class AddKillerFormComponent {
 
-  constructor() {}
+  name: string;
 
-  ngOnInit() {
+  constructor(private killersService: KillersService) {}
+
+
+  sendForm() {
+
+    const isEmpty = (value) => value === undefined || value === null || value.length === 0;
+
+    if (isEmpty(this.name)) {
+      return;
+    }
+
+    this.killersService.addKiller(this.name);
+    this.name = null;
   }
-
 }

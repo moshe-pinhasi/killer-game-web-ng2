@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
   selector: 'players Presentation',
   providers: [],
   directives: [],
-  template: `start-game page`
+  template: `players Presentation page`
 })
 export class PlayersPresentationComponent {
 

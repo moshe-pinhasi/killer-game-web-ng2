@@ -1,12 +1,23 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+
+import { UserAvatarComponent } from '../user-avatar/user-avatar.component';
+
 
 @Component({
-  moduleId: module.id,
   selector: 'app-killer',
-  templateUrl: 'killer.component.html',
-  styleUrls: ['killer.component.css']
+  styleUrls: ['killer.component.scss'],
+  directives: [UserAvatarComponent],
+  template: `
+    <div class="killer">
+      <div class="killer__avatar"><user-avatar [uuid]="uuid"></user-avatar></div>
+      <div class="killer__name">{{name}}</div>
+    </div>
+  `
 })
 export class KillerComponent implements OnInit {
+
+  @Input() name;
+  @Input() uuid;
 
   constructor() {}
 
