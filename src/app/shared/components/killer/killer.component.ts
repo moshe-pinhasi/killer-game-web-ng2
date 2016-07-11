@@ -4,7 +4,7 @@ import { UserAvatarComponent } from '../user-avatar/user-avatar.component';
 
 
 @Component({
-  selector: 'app-killer',
+  selector: 'killer',
   styleUrls: ['killer.component.scss'],
   directives: [UserAvatarComponent],
   template: `

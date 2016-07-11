@@ -14,7 +14,7 @@ import { AddKillerFormComponent } from '../shared/components/add-killer-form/add
   template: `
 
     <h1>create players</h1>
-    <app-killers-board>
+    <killers-board>
       <board-header>
         {{killers.length}} Killers <span class="createPlayers__minKillers">(min killers 3)</span>
       </board-header>
@@ -34,8 +34,7 @@ import { AddKillerFormComponent } from '../shared/components/add-killer-form/add
           Start
         </a>
       </board-actions>
-    </app-killers-board>
-
+    </killers-board>
   `
 })
 export class CreatePlayersComponent {

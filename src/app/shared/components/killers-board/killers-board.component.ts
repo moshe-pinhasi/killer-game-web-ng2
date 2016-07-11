@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   moduleId: module.id,
-  selector: 'app-killers-board',
+  selector: 'killers-board',
   styleUrls: ['killers-board.component.scss'],
   template: `
     <div class="killersBoard">

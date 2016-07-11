@@ -15,7 +15,7 @@ import { KillerComponent } from '../killer/killer.component';
              (click)="onRemove(killer.uuid)">
              x
             </button>
-            <app-killer [name]="killer.name" [uuid]="killer.uuid"></app-killer>
+            <killer [name]="killer.name" [uuid]="killer.uuid"></killer>
         </li>
       </ul>
     </div>
