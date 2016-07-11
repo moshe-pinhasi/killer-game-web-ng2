@@ -1,6 +1,6 @@
 # killer game using angular2-webpack framework
 
-kikstrater took from:
+the project base on 'starter for Angular 2 using webpack' that took from:
 https://github.com/preboot/angular2-webpack
 
 ## Dependencies
@@ -10,7 +10,8 @@ What you need to run this app:
 * Ensure you're running Node (`v5.x.x`+) and NPM (`3.x.x`+)
 
 ## Installing
-* git clone https://github.com/preboot/angular2-webpack.git my-app
+* git clone https://github.com/moyesh/killer-game-web-ng2 killer-game
+* cd killer-game
 * `npm install` to install all dependencies
 
 ## Running the app
