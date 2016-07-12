@@ -29,25 +29,18 @@ export class DisplayPlayerComponent implements OnInit {
 
   @Input() player;
   @Input() showDetailsAuto;
-  hidePlayer: boolean;
-  hideDetails: boolean;
+  hidePlayer: boolean = true;
+  hideDetails: boolean = true;
 
   constructor() {
-
-    this.hidePlayer = true;
-    this.hideDetails = true;
-
   }
 
   ngOnInit() {
+    setTimeout(() => this.hidePlayer = false, 500);
 
-    console.log(this.hidePlayer);
-
-    //setTimeout(() => this.hidePlayer = false, 1000);
-
-    //if (this.showDetailsAuto) {
-    //  setTimeout(this.showMore, 1200);
-    //}
+    if (this.showDetailsAuto) {
+      setTimeout(this.showMore, 700);
+    }
   }
 
   showMore() {
