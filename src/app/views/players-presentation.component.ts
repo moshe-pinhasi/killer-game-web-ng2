@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { KillersBoardComponent } from '../shared/components/killers-board/killers-board.component';
 import { DisplayPlayerComponent } from '../shared/components/display-player/display-player.component';
@@ -43,7 +44,7 @@ export class PlayersPresentationComponent implements OnInit {
   finished: boolean;
   index: number;
 
-  constructor(private killersService: KillersService, private gameService: GameService) {
+  constructor(private killersService: KillersService, private gameService: GameService, private router: Router) {
 
   }
 
@@ -56,9 +57,23 @@ export class PlayersPresentationComponent implements OnInit {
 
   next() {
 
+    if (this.finished) {
+      this.router.navigate(['startGame']);
+    }
+
+    if (this.index === (this.killers.length-1)) {
+      return;
+    }
+
+    this.player = this.killers[++this.index];
+    (this.index === (this.killers.length-1)) && (this.finished = true);
   }
 
   back() {
-
+    if (this.index === 0) {
+      return;
+    }
+    this.finished = false;
+    this.player = this.killers[--this.index];
   }
 }
