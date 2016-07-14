@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { WordsService } from './words.service';
 
-import 'lodash';
-declare var _;
+const _ = require('lodash');
 
 @Injectable()
 export class KillersService {

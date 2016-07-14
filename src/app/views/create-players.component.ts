@@ -20,8 +20,8 @@ import { AddKillerFormComponent } from '../shared/components/add-killer-form/add
       </board-header>
 
       <board-body>
-        <app-killers-list [killers]="killers"
-						  (deleted)="onRemove($event)"></app-killers-list>
+        <killers-list [killers]="killers"
+						  (deleted)="onRemove($event)"></killers-list>
         <div class="createPlayers__addPlayerContainer">
           <add-killer-form></add-killer-form>
         </div>

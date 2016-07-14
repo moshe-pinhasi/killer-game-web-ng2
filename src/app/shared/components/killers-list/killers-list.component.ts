@@ -3,7 +3,7 @@ import { Input, Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { KillerComponent } from '../killer/killer.component';
 
 @Component({
-  selector: 'app-killers-list',
+  selector: 'killers-list',
   styleUrls: ['killers-list.component.scss'],
   directives: [KillerComponent],
   template: `
@@ -28,7 +28,7 @@ export class KillersListComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
-
+    console.log(this.killers);
   }
 
   onRemove(uuid) {
