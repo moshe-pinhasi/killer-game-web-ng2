@@ -50,6 +50,8 @@ export class PlayersPresentationComponent implements OnInit {
 
   ngOnInit() {
     this.killers = this.gameService.match(this.killersService.getKillers());
+    this.killersService.setKillers(this.killers);
+
     this.index = 0;
     this.player = this.killers[0];
     this.finished = false;

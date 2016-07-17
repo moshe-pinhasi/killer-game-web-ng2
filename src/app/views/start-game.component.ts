@@ -23,13 +23,14 @@ const _ = require('lodash');
 
           <board-body>
             <display-player
-                    *ngIf="showPlayerDetails"
+                    *ngIf="killer && !winner"
                     [player]="killer"
                     [showDetailsAuto]="true"></display-player>
             <killers-list-game
-                       *ngIf="!showPlayerDetails"
+                       *ngIf="!killer && !winner"
                        [killers]="killers"
-                       (deleted)="onRemove(uuid)"></killers-list-game>
+                       (deleted)="onRemove($event)"></killers-list-game>
+            <div *ngIf="winner">{{winner}} is the killer!</div>
           </board-body>
 
         </killers-board>
@@ -40,10 +41,10 @@ export class StartGameComponent implements OnInit {
 
   killers;
   killer;
-  showPlayerDetails: boolean = false;
+  winner;
 
   constructor(private killersService: KillersService) {
-    this.showPlayerDetails = false;
+
   }
 
   ngOnInit() {
@@ -52,16 +53,21 @@ export class StartGameComponent implements OnInit {
 
   onRemove = (uuid) => { // uuid - the died player
 
-    const getKiller = (uuid) => this.killers.filter (player => player.person.uuid === uuid)[0];
+    const getKiller = (uuid) => this.killers.filter(player => player.person.uuid === uuid)[0];
     const getDiedPlayer = (uuid) => this.killers.filter (player => player.uuid === uuid)[0];
 
     this.killer = getKiller(uuid); // player here hit the killer
     const diedPlayer = getDiedPlayer(uuid);
 
     this.killer.person = diedPlayer.person; // replace the win player aim with the died player aim
-    setTimeout(() => {
-      this.killers = _.remove(this.killers, (player) => player.uuid !== uuid); // removing the died player fro list
+    this.killers.length > 2 && setTimeout(() => {
+      this.killers = _.remove(this.killers, (player) => player.uuid !== uuid); // removing the died player from list
       this.killer = null;
     }, 5000);
+
+    if (this.killers.length === 2) {
+      this.killers = _.remove(this.killers, (player) => player.uuid !== uuid); // removing the died player from list
+      this.winner = this.killers[0].name;
+    }
   }
 }

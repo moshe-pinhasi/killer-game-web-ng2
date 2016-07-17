@@ -24,6 +24,10 @@ export class KillersService {
     } );
   }
 
+  setKillers (killers): void {
+    this.killers = killers;
+  }
+
   removeKiller (uuid): void {
     _.remove(this.killers, (killer) => killer.uuid === uuid);
   }

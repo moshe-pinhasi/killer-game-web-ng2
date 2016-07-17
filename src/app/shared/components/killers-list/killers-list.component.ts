@@ -28,7 +28,7 @@ export class KillersListComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
-    console.log(this.killers);
+
   }
 
   onRemove(uuid) {

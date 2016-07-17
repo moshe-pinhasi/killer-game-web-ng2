@@ -21,14 +21,12 @@ import '../style/btns.scss';
   providers: [WordsService, KillersService],
   directives: [UserAvatarComponent, ROUTER_DIRECTIVES],
   template: `
-    <div>Webpack Angular 2 Starter</div>
-
     <div>
       <nav>
-        <a [routerLink]="['']">home</a>
-        <a [routerLink]="['createPlayers']">Create players</a>
-        <a [routerLink]="['startGame']">start game</a>
-        <a [routerLink]="['playersPresentation']">players Presentation</a>
+        <a [routerLink]="['']">Home | </a>
+        <a [routerLink]="['createPlayers']">Create players | </a>
+        <a [routerLink]="['playersPresentation']">Players presentation | </a>
+        <a [routerLink]="['startGame']">Start game</a>
       </nav>
     </div>
     <div>

@@ -12,29 +12,29 @@ import { AddKillerFormComponent } from '../shared/components/add-killer-form/add
   providers: [],
   directives: [ KillersBoardComponent, KillersListComponent, AddKillerFormComponent, ROUTER_DIRECTIVES ],
   template: `
+    <div class="createPlayers center">
+      <killers-board>
+        <board-header>
+          {{killers.length}} Killers <span class="createPlayers__minKillers">(min killers 3)</span>
+        </board-header>
 
-    <h1>create players</h1>
-    <killers-board>
-      <board-header>
-        {{killers.length}} Killers <span class="createPlayers__minKillers">(min killers 3)</span>
-      </board-header>
+        <board-body>
+          <killers-list [killers]="killers"
+                (deleted)="onRemove($event)"></killers-list>
+          <div class="createPlayers__addPlayerContainer">
+            <add-killer-form></add-killer-form>
+          </div>
+        </board-body>
 
-      <board-body>
-        <killers-list [killers]="killers"
-						  (deleted)="onRemove($event)"></killers-list>
-        <div class="createPlayers__addPlayerContainer">
-          <add-killer-form></add-killer-form>
-        </div>
-      </board-body>
-
-      <board-actions>
-        <a class="btn btn__start btn--ellipse"
-           ng-class="{'btn--disabled': killers.length < 3}"
-           [routerLink]="['/playersPresentation']">
-          Start
-        </a>
-      </board-actions>
-    </killers-board>
+        <board-actions>
+          <a class="btn btn__start btn--ellipse"
+             ng-class="{'btn--disabled': killers.length < 3}"
+             [routerLink]="['/playersPresentation']">
+            Start
+          </a>
+        </board-actions>
+      </killers-board>
+    </div>
   `
 })
 export class CreatePlayersComponent {
@@ -46,6 +46,6 @@ export class CreatePlayersComponent {
   }
 
   onRemove(uuid) {
-    console.log("uuid: " + uuid + " removed");
+    this.killersService.removeKiller(uuid);
   }
 }
