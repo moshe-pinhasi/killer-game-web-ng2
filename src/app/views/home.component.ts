@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ROUTER_DIRECTIVES } from '@angular/router';
 
 import { KillersService } from '../shared/services/killers.service';
 
@@ -7,12 +8,23 @@ import { KillersListComponent } from '../shared/components/killers-list/killers-
 @Component({
   selector: 'my-home',
   providers: [ ],
-  directives: [ KillersListComponent ],
+  directives: [ KillersListComponent, ROUTER_DIRECTIVES ],
+  styles: [`
+    .homepage {
+        height: 100%;
+        background: url('img/killer2.png') no-repeat;
+        background-size: 100% 100%;
+    }
+  `],
   template: `
-    home page
-
-    <!--<app-killers-list [killers]="killers"-->
-						  <!--(deleted)="onRemove($event)"></app-killers-list>-->
+    <div class="homepage center">
+      <div class="homepage__startContainer">
+        <a class="btn btn__start btn--ellipse"
+           [routerLink]="['/createPlayers']">
+          New Game
+        </a>
+      </div>
+    </div>
   `
 })
 export class HomeComponent implements OnInit {

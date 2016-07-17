@@ -21,7 +21,9 @@ import '../style/btns.scss';
   providers: [WordsService, KillersService],
   directives: [UserAvatarComponent, ROUTER_DIRECTIVES],
   template: `
-    <div>
+    <!--<router-outlet></router-outlet>-->
+
+    <div class="">
       <nav>
         <a [routerLink]="['']">Home | </a>
         <a [routerLink]="['createPlayers']">Create players | </a>
@@ -29,8 +31,8 @@ import '../style/btns.scss';
         <a [routerLink]="['startGame']">Start game</a>
       </nav>
     </div>
-    <div>
-       <router-outlet></router-outlet>
+    <div class="">
+      <router-outlet></router-outlet>
     </div>
   `
 })
