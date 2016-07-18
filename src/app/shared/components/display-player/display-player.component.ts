@@ -37,12 +37,23 @@ export class DisplayPlayerComponent implements OnInit {
   constructor() {
   }
 
-  ngOnInit() {
+  reset() {
+    this.hidePlayer = true;
+    this.hideDetails = true;
+  }
+
+  ngOnChanges () {
+    this.reset();
+
     setTimeout(() => this.hidePlayer = false, 500);
 
     if (this.showDetailsAuto) {
       setTimeout(this.showMore, 700);
     }
+  }
+
+  ngOnInit() {
+
   }
 
   showMore() {
