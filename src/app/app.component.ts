@@ -21,8 +21,6 @@ import '../style/btns.scss';
   providers: [WordsService, KillersService],
   directives: [UserAvatarComponent, ROUTER_DIRECTIVES],
   template: `
-    <!--<router-outlet></router-outlet>-->
-
     <div class="">
       <nav>
         <a [routerLink]="['']">Home | </a>

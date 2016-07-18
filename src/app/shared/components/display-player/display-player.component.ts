@@ -9,11 +9,13 @@ import { KillerComponent } from '../killer/killer.component';
   template: `
     <div class="displayPlayer">
       <div class="displayPlayer__row center displayPlayer__playerAnimation"
-         [hidden]="hidePlayer" (click)="showMore()">
+           [ngClass]="{'displayPlayer__showPlayer': !hidePlayer}"
+           (click)="showMore()">
           <killer [name]="player.name" [uuid]="player.uuid"></killer>
       </div>
 
-      <div class="displayPlayer__row center displayPlayer__playerAnimation" [hidden]="hideDetails">
+      <div class="displayPlayer__row center displayPlayer__playerAnimation"
+           [ngClass]="{'displayPlayer__showPlayer': !hideDetails}">
         <div sytle="displayPlayer__aimPlayer">
           <div>Your person is: <span class="displayPlayer__playerWord">{{player.person.name}}</span></div>
           <div>His word is: <span class="displayPlayer__playerWord">{{player.person.word}}</span></div>
