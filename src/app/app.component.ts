@@ -21,17 +21,19 @@ import '../style/btns.scss';
   providers: [WordsService, KillersService],
   directives: [UserAvatarComponent, ROUTER_DIRECTIVES],
   template: `
-    <div class="">
-      <nav>
-        <a [routerLink]="['']">Home | </a>
-        <a [routerLink]="['createPlayers']">Create players | </a>
-        <a [routerLink]="['playersPresentation']">Players presentation | </a>
-        <a [routerLink]="['startGame']">Start game</a>
-      </nav>
-    </div>
-    <div class="">
-      <router-outlet></router-outlet>
-    </div>
+    <router-outlet></router-outlet>
+
+    <!--<div class="">-->
+      <!--<nav>-->
+        <!--<a [routerLink]="['']">Home | </a>-->
+        <!--<a [routerLink]="['createPlayers']">Create players | </a>-->
+        <!--<a [routerLink]="['playersPresentation']">Players presentation | </a>-->
+        <!--<a [routerLink]="['startGame']">Start game</a>-->
+      <!--</nav>-->
+    <!--</div>-->
+    <!--<div class="">-->
+      <!--<router-outlet></router-outlet>-->
+    <!--</div>-->
   `
 })
 export class AppComponent {
