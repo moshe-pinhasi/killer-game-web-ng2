@@ -1,6 +1,4 @@
-import { Component } from '@angular/core';
-
-import { KillersService } from '../../services/killers.service';
+import { Component, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'add-killer-form',
@@ -27,8 +25,9 @@ import { KillersService } from '../../services/killers.service';
 export class AddKillerFormComponent {
 
   name: string;
+  @Output('addedKiller') whenKillerAdded = new EventEmitter<string>();
 
-  constructor(private killersService: KillersService) {}
+  constructor() {}
 
 
   sendForm() {
@@ -39,7 +38,7 @@ export class AddKillerFormComponent {
       return;
     }
 
-    this.killersService.addKiller(this.name);
+    this.whenKillerAdded.emit(this.name);
     this.name = null;
   }
 }

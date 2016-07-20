@@ -22,7 +22,7 @@ import { AddKillerFormComponent } from '../shared/components/add-killer-form/add
           <killers-list [killers]="killers"
                 (deleted)="onRemove($event)"></killers-list>
           <div class="createPlayers__addPlayerContainer">
-            <add-killer-form></add-killer-form>
+            <add-killer-form (addedKiller)="onKillerAdded($event)"></add-killer-form>
           </div>
         </board-body>
 
@@ -43,6 +43,10 @@ export class CreatePlayersComponent {
 
   constructor(private killersService: KillersService) {
     this.killers = killersService.getKillers();
+  }
+
+  onKillerAdded(killerName) {
+    this.killersService.addKiller(killerName);
   }
 
   onRemove(uuid) {
