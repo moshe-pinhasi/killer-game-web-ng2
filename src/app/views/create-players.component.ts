@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { ROUTER_DIRECTIVES } from '@angular/router';
 
 import { KillersService } from '../shared/services/killers.service';
@@ -6,6 +6,8 @@ import { KillersService } from '../shared/services/killers.service';
 import { KillersBoardComponent } from '../shared/components/killers-board/killers-board.component';
 import { KillersListComponent } from '../shared/components/killers-list/killers-list.component';
 import { AddKillerFormComponent } from '../shared/components/add-killer-form/add-killer-form.component';
+
+import { ADD_KILLER, REMOVE_KILLER } from '../shared/reducers/killersReducer';
 
 @Component({
   selector: 'create-players',
@@ -40,16 +42,31 @@ import { AddKillerFormComponent } from '../shared/components/add-killer-form/add
 export class CreatePlayersComponent {
 
   killers;
+  unsubscribe;
 
-  constructor(private killersService: KillersService) {
-    this.killers = killersService.getKillers();
+  constructor(private killersService: KillersService, @Inject('AppStore') private store) {
+    //this.killers = killersService.getKillers();
+
+    this.killers = this.store.getState().killers;
+
+    this.unsubscribe = this.store.subscribe( () => {
+
+      console.log(this.store);
+
+      let state = this.store.getState();
+      this.killers = state.killers;
+    });
   }
 
   onKillerAdded(killerName) {
-    this.killersService.addKiller(killerName);
+    //this.killersService.addKiller(killerName);
+
+    const k = this.killersService.getKillerObj(killerName);
+    this.store.dispatch({ type: ADD_KILLER, killer: k });
   }
 
   onRemove(uuid) {
-    this.killersService.removeKiller(uuid);
+    //this.killersService.removeKiller(uuid);
+    this.store.dispatch({ type: REMOVE_KILLER, id: uuid });
   }
 }
