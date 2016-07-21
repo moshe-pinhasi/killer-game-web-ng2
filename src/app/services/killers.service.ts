@@ -1,5 +1,5 @@
 import { Injectable, Inject, OnDestroy } from '@angular/core';
-import { WordsService } from './words.service';
+import { WordsService } from 'src/app/services';
 
 const _ = require('lodash');
 

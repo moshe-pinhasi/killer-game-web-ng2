@@ -11,10 +11,10 @@ export class GameService {
 
     let k = _.shuffle(killers);
 
-    k[k.length-1].person = k[0];
+    k[k.length - 1].person = k[0];
     let i;
-    for (i = 0; i < k.length-1; i++) {
-      k[i].person = k[i+1];
+    for (i = 0; i < k.length - 1; i++) {
+      k[i].person = k[i + 1];
     }
 
     return _.shuffle(k);

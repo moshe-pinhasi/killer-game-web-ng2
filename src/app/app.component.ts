@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ROUTER_DIRECTIVES } from '@angular/router';
 
-import { KillersService, WordsService } from './shared/services';
+import { KillersService, WordsService } from 'src/app/services';
 
 import '../style/general.scss';
 import '../style/globals.scss';

@@ -1,11 +1,11 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { KillersBoardComponent, DisplayPlayerComponent } from '../shared/components/components';
+import { KillersBoardComponent, DisplayPlayerComponent } from 'src/app/components';
 
-import { GameService } from '../shared/services/game.service';
+import { GameService } from 'src/app/services';
 
-import { SET_KILLERS } from '../shared/reducers/killersReducer';
+import { SET_KILLERS } from 'src/app/reducers/killersReducer';
 
 @Component({
   selector: 'players Presentation',
@@ -65,12 +65,12 @@ export class PlayersPresentationComponent implements OnInit {
       this.router.navigate(['startGame']);
     }
 
-    if (this.index === (this.killers.length-1)) {
+    if (this.index === (this.killers.length - 1)) {
       return;
     }
 
     this.player = this.killers[++this.index];
-    (this.index === (this.killers.length-1)) && (this.finished = true);
+    (this.index === (this.killers.length - 1)) && (this.finished = true);
   }
 
   back() {

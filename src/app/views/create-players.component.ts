@@ -1,11 +1,11 @@
 import { Component, Inject, OnDestroy } from '@angular/core';
 import { ROUTER_DIRECTIVES } from '@angular/router';
 
-import { KillersService } from '../shared/services/killers.service';
+import { KillersService } from 'src/app/services';
 
-import { KillersBoardComponent, KillersListComponent, AddKillerFormComponent } from '../shared/components/components';
+import { KillersBoardComponent, KillersListComponent, AddKillerFormComponent } from 'src/app/components';
 
-import { ADD_KILLER, REMOVE_KILLER } from '../shared/reducers/killersReducer';
+import { ADD_KILLER, REMOVE_KILLER } from 'src/app/reducers/killersReducer';
 
 @Component({
   selector: 'create-players',

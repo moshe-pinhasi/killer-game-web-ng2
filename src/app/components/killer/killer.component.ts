@@ -1,7 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-import { UserAvatarComponent } from '../user-avatar/user-avatar.component';
-
+import { UserAvatarComponent } from 'src/app/components';
 
 @Component({
   selector: 'killer',

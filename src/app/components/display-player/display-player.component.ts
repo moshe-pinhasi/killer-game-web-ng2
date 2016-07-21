@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-import { KillerComponent } from '../killer/killer.component';
+import { KillerComponent } from 'src/app/components';
 
 @Component({
   selector: 'display-player',

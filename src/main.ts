@@ -7,7 +7,7 @@ import {createStore} from 'redux';
 import { AppComponent } from './app/app.component';
 import { APP_ROUTER_PROVIDERS } from './app/app.routes';
 
-import { killersReducer } from './app/shared/reducers/killersReducer';
+import { killersReducer } from 'src/app/reducers/killersReducer';
 
 const appStore = createStore(killersReducer);
 

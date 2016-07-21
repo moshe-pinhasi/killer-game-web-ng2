@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { KillersBoardComponent, DisplayPlayerComponent, KillersListGameComponent } from '../shared/components/components';
+import { KillersBoardComponent, DisplayPlayerComponent, KillersListGameComponent } from 'src/app/components';
 
 const _ = require('lodash');
 
@@ -49,22 +49,22 @@ export class StartGameComponent implements OnInit {
     this.killers = _.shuffle(this.store.getState().killers);
   }
 
-  onRemove = (uuid) => { // uuid - the died player
+  onRemove = (killerId) => { // uuid - the died player
 
     const getKiller = (uuid) => this.killers.filter(player => player.person.uuid === uuid)[0];
     const getDiedPlayer = (uuid) => this.killers.filter (player => player.uuid === uuid)[0];
 
-    this.killer = getKiller(uuid); // player here hit the killer
-    const diedPlayer = getDiedPlayer(uuid);
+    this.killer = getKiller(killerId); // player here hit the killer
+    const diedPlayer = getDiedPlayer(killerId);
 
     this.killer.person = diedPlayer.person; // replace the win player aim with the died player aim
     this.killers.length > 2 && setTimeout(() => {
-      this.killers = _.remove(this.killers, (player) => player.uuid !== uuid); // removing the died player from list
+      this.killers = _.remove(this.killers, (player) => player.uuid !== killerId); // removing the died player from list
       this.killer = null;
     }, 5000);
 
     if (this.killers.length === 2) {
-      this.killers = _.remove(this.killers, (player) => player.uuid !== uuid); // removing the died player from list
+      this.killers = _.remove(this.killers, (player) => player.uuid !== killerId); // removing the died player from list
       this.winner = this.killers[0].name;
     }
   }

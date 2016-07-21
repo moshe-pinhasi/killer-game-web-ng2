@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
-import { KillerComponent } from '../killer/killer.component';
+import { KillerComponent } from 'src/app/components';
 
 @Component({
   selector: 'killers-list-game',
