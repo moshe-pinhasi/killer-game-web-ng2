@@ -11,6 +11,19 @@ import { ADD_KILLER, REMOVE_KILLER } from '../shared/reducers/killersReducer';
   selector: 'create-players',
   providers: [],
   directives: [ KillersBoardComponent, KillersListComponent, AddKillerFormComponent, ROUTER_DIRECTIVES ],
+  styles: [`
+    .createPlayers__addPlayerContainer {
+      position: absolute;
+      bottom: 70px;
+      left: 10px;
+      right: 10px;
+    }
+
+    .createPlayers__minKillers {
+      font-size: 12px;
+      font-weight: 300;
+    }
+  `],
   template: `
     <div class="createPlayers center">
       <killers-board>
