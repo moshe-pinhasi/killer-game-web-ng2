@@ -1,11 +1,9 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, OnDestroy } from '@angular/core';
 import { ROUTER_DIRECTIVES } from '@angular/router';
 
 import { KillersService } from '../shared/services/killers.service';
 
-import { KillersBoardComponent } from '../shared/components/killers-board/killers-board.component';
-import { KillersListComponent } from '../shared/components/killers-list/killers-list.component';
-import { AddKillerFormComponent } from '../shared/components/add-killer-form/add-killer-form.component';
+import { KillersBoardComponent, KillersListComponent, AddKillerFormComponent } from '../shared/components/components';
 
 import { ADD_KILLER, REMOVE_KILLER } from '../shared/reducers/killersReducer';
 
@@ -30,7 +28,7 @@ import { ADD_KILLER, REMOVE_KILLER } from '../shared/reducers/killersReducer';
 
         <board-actions>
           <a class="btn btn__start btn--ellipse"
-             ng-class="{'btn--disabled': killers.length < 3}"
+             [ngClass]="{'btn--disabled': killers.length < 3}"
              [routerLink]="['/playersPresentation']">
             Start
           </a>
@@ -39,34 +37,30 @@ import { ADD_KILLER, REMOVE_KILLER } from '../shared/reducers/killersReducer';
     </div>
   `
 })
-export class CreatePlayersComponent {
+export class CreatePlayersComponent implements OnDestroy {
 
   killers;
   unsubscribe;
 
-  constructor(private killersService: KillersService, @Inject('AppStore') private store) {
-    //this.killers = killersService.getKillers();
+  constructor(@Inject('AppStore') private store, private killersService: KillersService) {
+    this.unsubscribe = this.store.subscribe(() => this.setKillers());
+    this.setKillers();
+  }
 
+  setKillers() {
     this.killers = this.store.getState().killers;
-
-    this.unsubscribe = this.store.subscribe( () => {
-
-      console.log(this.store);
-
-      let state = this.store.getState();
-      this.killers = state.killers;
-    });
   }
 
   onKillerAdded(killerName) {
-    //this.killersService.addKiller(killerName);
-
     const k = this.killersService.getKillerObj(killerName);
     this.store.dispatch({ type: ADD_KILLER, killer: k });
   }
 
   onRemove(uuid) {
-    //this.killersService.removeKiller(uuid);
-    this.store.dispatch({ type: REMOVE_KILLER, id: uuid });
+    this.store.dispatch({ type: REMOVE_KILLER, uuid: uuid });
+  }
+
+  ngOnDestroy() {
+    this.unsubscribe();
   }
 }

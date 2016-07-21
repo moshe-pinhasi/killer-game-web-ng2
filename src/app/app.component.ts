@@ -1,10 +1,7 @@
 import { Component } from '@angular/core';
 import { ROUTER_DIRECTIVES } from '@angular/router';
 
-import { KillersService } from './shared/services/killers.service';
-import { WordsService } from './shared/services/words.service';
-
-import { UserAvatarComponent } from './shared/components/user-avatar/user-avatar.component';
+import { KillersService, WordsService } from './shared/services';
 
 import '../style/general.scss';
 import '../style/globals.scss';
@@ -19,7 +16,7 @@ import '../style/btns.scss';
 @Component({
   selector: 'my-app', // <my-app></my-app>
   providers: [WordsService, KillersService],
-  directives: [UserAvatarComponent, ROUTER_DIRECTIVES],
+  directives: [ROUTER_DIRECTIVES],
   template: `
     <router-outlet></router-outlet>
 
@@ -38,11 +35,7 @@ import '../style/btns.scss';
 })
 export class AppComponent {
 
-  constructor(private killersService: KillersService) {
+  constructor() {
 
-    killersService.addKiller('moshe');
-    killersService.addKiller('yaniv');
-    killersService.addKiller('igal');
-    killersService.addKiller('yaron');
   }
 }

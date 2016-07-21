@@ -1,14 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ROUTER_DIRECTIVES } from '@angular/router';
-
-import { KillersService } from '../shared/services/killers.service';
-
-import { KillersListComponent } from '../shared/components/killers-list/killers-list.component';
 
 @Component({
   selector: 'my-home',
   providers: [ ],
-  directives: [ KillersListComponent, ROUTER_DIRECTIVES ],
+  directives: [ ROUTER_DIRECTIVES ],
   styles: [`
     .homepage {
         height: 100%;
@@ -27,22 +23,13 @@ import { KillersListComponent } from '../shared/components/killers-list/killers-
     </div>
   `
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent {
 
-  killers;
 
-  constructor(private killersService: KillersService) {
-    // Do stuff
-    this.killers = killersService.getKillers();
+  constructor() {
+
 
   }
 
-  ngOnInit() {
-    //console.log(this.killers);
-  }
-
-  onRemove(uuid) {
-    console.log("uuid: " + uuid + " removed");
-  }
 
 }

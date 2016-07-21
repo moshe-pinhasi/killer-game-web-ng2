@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { KillersBoardComponent } from '../shared/components/killers-board/killers-board.component';
-import { DisplayPlayerComponent } from '../shared/components/display-player/display-player.component';
+import { KillersBoardComponent, DisplayPlayerComponent } from '../shared/components/components';
 
-import { KillersService } from '../shared/services/killers.service';
 import { GameService } from '../shared/services/game.service';
+
+import { SET_KILLERS } from '../shared/reducers/killersReducer';
 
 @Component({
   selector: 'players Presentation',
@@ -44,13 +44,15 @@ export class PlayersPresentationComponent implements OnInit {
   finished: boolean;
   index: number;
 
-  constructor(private killersService: KillersService, private gameService: GameService, private router: Router) {
-
+  constructor(@Inject('AppStore') private store, private gameService: GameService, private router: Router) {
+    if (store.getState().killers.length === 0) {
+      router.navigate(['/']);
+    }
   }
 
   ngOnInit() {
-    this.killers = this.gameService.match(this.killersService.getKillers());
-    this.killersService.setKillers(this.killers);
+    this.killers = this.gameService.match(this.store.getState().killers);
+    this.store.dispatch({ type: SET_KILLERS, killers: this.killers });
 
     this.index = 0;
     this.player = this.killers[0];

@@ -1,11 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
+import { Router } from '@angular/router';
 
-import { KillersService } from '../shared/services/killers.service';
-
-import { KillersBoardComponent } from '../shared/components/killers-board/killers-board.component';
-import { DisplayPlayerComponent } from '../shared/components/display-player/display-player.component';
-import { KillersListGameComponent } from '../shared/components/killers-list-game/killers-list-game.component';
-//import { KillersListComponent } from '../shared/components/killers-list/killers-list.component';
+import { KillersBoardComponent, DisplayPlayerComponent, KillersListGameComponent } from '../shared/components/components';
 
 const _ = require('lodash');
 
@@ -43,12 +39,14 @@ export class StartGameComponent implements OnInit {
   killer;
   winner;
 
-  constructor(private killersService: KillersService) {
-
+  constructor(@Inject('AppStore') private store, private router: Router) {
+    if (store.getState().killers.length === 0) {
+      router.navigate(['/']);
+    }
   }
 
   ngOnInit() {
-    this.killers = _.shuffle(this.killersService.getKillers());
+    this.killers = _.shuffle(this.store.getState().killers);
   }
 
   onRemove = (uuid) => { // uuid - the died player
