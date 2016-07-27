@@ -45,9 +45,11 @@ export class PlayersPresentationComponent implements OnInit {
   index: number;
 
   constructor(@Inject('AppStore') private store, private gameService: GameService, private router: Router) {
+
     if (store.getState().killers.length === 0) {
       router.navigate(['/']);
     }
+
   }
 
   ngOnInit() {

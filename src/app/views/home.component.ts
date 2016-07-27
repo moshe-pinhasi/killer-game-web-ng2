@@ -1,10 +1,14 @@
-import { Component } from '@angular/core';
-import { ROUTER_DIRECTIVES } from '@angular/router';
+import { Component, Inject } from '@angular/core';
+import { Router } from '@angular/router';
+
+import { REMOVE_ALL_KILLERS } from 'src/app/reducers/killersReducer';
+
+const localStorage = require('store');
 
 @Component({
   selector: 'my-home',
   providers: [ ],
-  directives: [ ROUTER_DIRECTIVES ],
+  directives: [ ],
   styles: [`
     .homepage {
         height: 100%;
@@ -16,7 +20,7 @@ import { ROUTER_DIRECTIVES } from '@angular/router';
     <div class="homepage center">
       <div class="homepage__startContainer">
         <a class="btn btn__start btn--ellipse"
-           [routerLink]="['/createPlayers']">
+           (click)="startNewGame()">
           New Game
         </a>
       </div>
@@ -26,10 +30,14 @@ import { ROUTER_DIRECTIVES } from '@angular/router';
 export class HomeComponent {
 
 
-  constructor() {
-
+  constructor(@Inject('AppStore') private store, private router: Router) {
 
   }
 
+  startNewGame () {
+    localStorage.clear();
+    this.store.dispatch({ type: REMOVE_ALL_KILLERS });
 
+    this.router.navigate(['/createPlayers']);
+  }
 }
