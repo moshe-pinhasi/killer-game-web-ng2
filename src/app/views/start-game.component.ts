@@ -3,6 +3,10 @@ import { Router } from '@angular/router';
 
 import { KillersBoardComponent, DisplayPlayerComponent, KillersListGameComponent } from 'src/app/components';
 
+import { REMOVE_ALL_KILLERS, SET_KILLERS } from 'src/app/reducers/killersReducer';
+
+const localStorage = require('store');
+
 const _ = require('lodash');
 
 @Component({
@@ -29,6 +33,13 @@ const _ = require('lodash');
             <div *ngIf="winner">{{winner}} is the killer!</div>
           </board-body>
 
+          <board-actions>
+          <a *ngIf="winner"
+             class="btn btn__start btn--ellipse"
+             (click)="startNewGame()">
+            Start
+          </a>
+        </board-actions>
         </killers-board>
       </div>
   `
@@ -47,6 +58,17 @@ export class StartGameComponent implements OnInit {
 
   ngOnInit() {
     this.killers = _.shuffle(this.store.getState().killers);
+
+    if (this.killers.length === 1) {
+      this.winner = this.killers[0].name;
+    }
+  }
+
+  startNewGame () {
+    localStorage.clear();
+    this.store.dispatch({ type: REMOVE_ALL_KILLERS });
+
+    this.router.navigate(['/createPlayers']);
   }
 
   onRemove = (killerId) => { // uuid - the died player
@@ -58,14 +80,18 @@ export class StartGameComponent implements OnInit {
     const diedPlayer = getDiedPlayer(killerId);
 
     this.killer.person = diedPlayer.person; // replace the win player aim with the died player aim
-    this.killers.length > 2 && setTimeout(() => {
-      this.killers = _.remove(this.killers, (player) => player.uuid !== killerId); // removing the died player from list
-      this.killer = null;
-    }, 5000);
-
     if (this.killers.length === 2) {
       this.killers = _.remove(this.killers, (player) => player.uuid !== killerId); // removing the died player from list
       this.winner = this.killers[0].name;
+      this.store.dispatch({ type: SET_KILLERS, killers: this.killers });
+      return;
     }
+
+    setTimeout(() => {
+      this.killers = _.remove(this.killers, (player) => player.uuid !== killerId); // removing the died player from list
+      this.killer = null;
+      this.store.dispatch({ type: SET_KILLERS, killers: this.killers });
+    }, 5000);
+
   }
 }

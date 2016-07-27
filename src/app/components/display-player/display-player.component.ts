@@ -48,7 +48,9 @@ export class DisplayPlayerComponent implements OnInit {
     setTimeout(() => this.hidePlayer = false, 500);
 
     if (this.showDetailsAuto) {
-      setTimeout(this.showMore, 700);
+      setTimeout(() => {
+        this.showMore();
+      }, 700);
     }
   }
 
