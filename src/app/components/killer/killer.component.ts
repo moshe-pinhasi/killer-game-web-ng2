@@ -5,7 +5,6 @@ import { UserAvatarComponent } from 'src/app/components';
 @Component({
   selector: 'killer',
   styleUrls: ['killer.component.scss'],
-  directives: [UserAvatarComponent],
   template: `
     <div class="killer">
       <div class="killer__avatar"><user-avatar [uuid]="uuid"></user-avatar></div>

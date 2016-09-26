@@ -5,7 +5,6 @@ import { KillerComponent } from 'src/app/components';
 @Component({
   selector: 'killers-list-game',
   styleUrls: ['killers-list-game.component.scss'],
-  directives: [KillerComponent],
   template: `
     <div class="killersListGame">
       <ul class="killersListGame__container">

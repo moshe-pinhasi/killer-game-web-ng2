@@ -1,5 +1,4 @@
 import { Component, Inject, OnDestroy } from '@angular/core';
-import { ROUTER_DIRECTIVES } from '@angular/router';
 
 import { KillersService } from 'src/app/services';
 
@@ -10,7 +9,6 @@ import { ADD_KILLER, REMOVE_KILLER } from 'src/app/reducers/killersReducer';
 @Component({
   selector: 'create-players',
   providers: [],
-  directives: [ KillersBoardComponent, KillersListComponent, AddKillerFormComponent, ROUTER_DIRECTIVES ],
   styles: [`
     .createPlayers__addPlayerContainer {
       position: absolute;
@@ -42,7 +40,7 @@ import { ADD_KILLER, REMOVE_KILLER } from 'src/app/reducers/killersReducer';
         <board-actions>
           <a class="btn btn__start btn--ellipse"
              [ngClass]="{'btn--disabled': killers.length < 3}"
-             [routerLink]="['/playersPresentation']">
+             routerLink="/playersPresentation">
             Start
           </a>
         </board-actions>

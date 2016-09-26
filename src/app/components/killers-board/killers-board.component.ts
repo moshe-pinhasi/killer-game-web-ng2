@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  moduleId: module.id,
   selector: 'killers-board',
   styleUrls: ['killers-board.component.scss'],
   template: `

@@ -7,8 +7,6 @@ const localStorage = require('store');
 
 @Component({
   selector: 'my-home',
-  providers: [ ],
-  directives: [ ],
   styles: [`
     .homepage {
         height: 100%;

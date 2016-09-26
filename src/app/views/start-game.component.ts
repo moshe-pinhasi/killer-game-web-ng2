@@ -12,7 +12,6 @@ const _ = require('lodash');
 @Component({
   selector: 'start-game',
   providers: [],
-  directives: [KillersBoardComponent, DisplayPlayerComponent, KillersListGameComponent],
   template: `
 
       <div class="startGame center">

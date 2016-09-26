@@ -10,7 +10,6 @@ import { SET_KILLERS } from 'src/app/reducers/killersReducer';
 @Component({
   selector: 'players Presentation',
   providers: [GameService],
-  directives: [KillersBoardComponent, DisplayPlayerComponent],
   template: `
     <div class="playersPresentation center">
       <killers-board>

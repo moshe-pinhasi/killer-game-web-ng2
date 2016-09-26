@@ -23,10 +23,4 @@
 //  { provide: 'AppStore', useValue: appStore}
 //  ])
 //  .catch(err => console.error(err));
-
-
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import { AppModule } from 'src/app.module.ts';
-
-const platform = platformBrowserDynamic();
-platform.bootstrapModule(AppModule);
+//# sourceMappingURL=main.js.map

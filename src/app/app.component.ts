@@ -1,6 +1,4 @@
 import { Component, Inject } from '@angular/core';
-import { ROUTER_DIRECTIVES } from '@angular/router';
-
 import { KillersService, WordsService, StoreService } from 'src/app/services';
 
 import { RESTORE_KILLERS } from 'src/app/reducers/killersReducer';
@@ -19,7 +17,6 @@ import '../style/btns.scss';
 @Component({
   selector: 'my-app', // <my-app></my-app>
   providers: [WordsService, KillersService, StoreService],
-  directives: [ROUTER_DIRECTIVES],
   template: `
     <router-outlet></router-outlet>
 

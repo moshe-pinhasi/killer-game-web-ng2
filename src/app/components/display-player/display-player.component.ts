@@ -5,7 +5,6 @@ import { KillerComponent } from 'src/app/components';
 @Component({
   selector: 'display-player',
   styleUrls: ['display-player.component.scss'],
-  directives: [KillerComponent],
   template: `
     <div class="displayPlayer">
       <div class="displayPlayer__row center displayPlayer__playerAnimation"

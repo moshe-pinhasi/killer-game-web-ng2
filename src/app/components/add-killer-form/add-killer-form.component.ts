@@ -3,7 +3,6 @@ import { Component, Output, EventEmitter } from '@angular/core';
 @Component({
   selector: 'add-killer-form',
   styleUrls: ['add-killer-form.component.scss'],
-  providers: [],
   templateUrl: `
     <div class="addKillerForm pull--right">
 
